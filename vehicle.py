@@ -1,18 +1,21 @@
+from tkinter import W
 from blinker import *
 from engine import *
+from fuel import *
 
 class Vehicle:
     def __init__(self):
         self.blinker_front = Blinker(BLINKER_FRONT)
         self.blinker_rear = Blinker(BLINKER_REAR)
         self.engine=Engine()
+        self.fuel=Fuel(self.engine)
         #self.environment=Environment()
-        #self.ligjt=light(self.environment)
+        #self.light=light(self.environment)
         
 
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + "\n" + str(self.engine)
+        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + "\n" + str(self.engine)+ "\n" + str(self.fuel)
         
         return status
 
@@ -42,9 +45,12 @@ class Vehicle:
 
             if key == 'q':
                 exit()
+
+            
+            
             
             #self.light.update()
-            #self.fuel.update()
+            self.fuel.update()
 
 
 if __name__ == "__main__":
