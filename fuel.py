@@ -13,6 +13,6 @@ class Fuel():
     def __str__(self):
 
         status="El nivel de combustible es de " + str(self.update()) + " L"
-        print("---------------------------------------------------------------------------------")
+        
         return status
 

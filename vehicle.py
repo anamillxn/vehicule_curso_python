@@ -2,6 +2,8 @@ from tkinter import W
 from blinker import *
 from engine import *
 from fuel import *
+from environment import *
+from light import *
 
 class Vehicle:
     def __init__(self):
@@ -9,13 +11,13 @@ class Vehicle:
         self.blinker_rear = Blinker(BLINKER_REAR)
         self.engine=Engine()
         self.fuel=Fuel(self.engine)
-        #self.environment=Environment()
-        #self.light=light(self.environment)
+        self.environment=Environment()
+        self.light=Light(self.environment)
         
 
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + "\n" + str(self.engine)+ "\n" + str(self.fuel)
+        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + "\n" + str(self.engine)+ "\n" + str(self.fuel) + "\n" + str(self.environment)+ "\n" + str(self.light)
         
         return status
 
@@ -38,10 +40,10 @@ class Vehicle:
                 self.engine.modify_gear(1)
             if key == 'd':
                 self.engine.modify_gear(-1)
-            #if key == 'r':
-            #    self.environment.modify_lum(10)
-            #if key == 'f':
-            #    self.environment.modify_lum(-10)
+            if key == 'r':
+                self.environment.modify_lum(10)
+            if key == 'f':
+                self.environment.modify_lum(-10)
 
             if key == 'q':
                 exit()
@@ -49,7 +51,7 @@ class Vehicle:
             
             
             
-            #self.light.update()
+            self.light.update()
             self.fuel.update()
 
 
